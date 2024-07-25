@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hover Sound Example</title>
+  <style>
+    #logoImage {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="circleWrap">
+  <div class="circle d-flex">
+    <img src="./Image/Logoimg.webp" alt="Shreiyans coding school" id="logoImage" />
+    <div class="text">
+      <p>Sheriyans Coding School - Learn Coding -</p>
+    </div>
+  </div>
+</div>
+
+<audio id="hoverSound">
+  <source src=".\Image\lionroar.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  var hoverSound = document.getElementById('hoverSound');
+  var logoImage = document.getElementById('logoImage');
+
+  logoImage.addEventListener('mouseover', function() {
+    console.log('Mouseover event triggered'); // Debugging
+    if (hoverSound.paused) {
+      hoverSound.play().catch(function(error) {
+        console.error('Error playing sound:', error); // Error handling
+      });
+    }
+  });
+
+  logoImage.addEventListener('mouseout', function() {
+    console.log('Mouseout event triggered'); // Debugging
+    hoverSound.pause();
+    hoverSound.currentTime = 0; // Reset the sound to the beginning
+  });
+</script>
+
+</body>
+</html>
